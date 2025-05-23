@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Vara Real Estate</title>
+    <link rel="stylesheet" href="css/admin-style.css">
+</head>
+<body>
+    <aside class="sidebar">
+        <h2>Vara Admin</h2>
+        <ul>
+            <li><a href="index.html">Dashboard</a></li>
+            <li><a href="pages/listings.html">Property Listings</a></li>
+            <li><a href="pages/inquiries.html">Manage Inquiries</a></li>
+            <li><a href="#">Users</a></li>
+            <li><a href="login.html">Logout</a></li>
+        </ul>
+    </aside>
+
+    <div class="main-content">
+        <header class="admin-header">
+            <h1>Admin Dashboard</h1>
+            <p>Welcome, Admin!</p>
+            <a href="pages/edit-listing.html" class="btn btn-primary">Add New Property</a>
+        </header>
+
+        <section class="dashboard-summary">
+            <div class="summary-cards-container">
+                <div class="summary-card">
+                    <h3>Total Active Listings</h3>
+                    <p class="count">0</p>
+                    <a href="pages/listings.html">View Listings</a>
+                </div>
+                <div class="summary-card">
+                    <h3>New Inquiries</h3>
+                    <p class="count">0</p>
+                    <a href="pages/inquiries.html">View Inquiries</a>
+                </div>
+                <div class="summary-card">
+                    <h3>Pending Approvals (Example)</h3>
+                    <p class="count">0</p>
+                    <a href="#">View Pending</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="recent-activity">
+            <h2>Recent Activity</h2>
+            <p>No recent activity to display.</p>
+        </section>
+    </div>
+
+    <script src="js/admin-main.js" defer></script>
+</body>
+</html>

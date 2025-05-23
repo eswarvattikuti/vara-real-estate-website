@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Listings - Admin Dashboard</title>
+    <link rel="stylesheet" href="../css/admin-style.css">
+</head>
+<body>
+    <aside class="sidebar">
+        <h2>Vara Admin</h2>
+        <ul>
+            <li><a href="../index.html">Dashboard</a></li>
+            <li><a href="listings.html">Property Listings</a></li>
+            <li><a href="inquiries.html">Manage Inquiries</a></li>
+            <li><a href="#">Users</a></li>
+            <li><a href="../login.html">Logout</a></li>
+        </ul>
+    </aside>
+
+    <div class="main-content">
+        <header class="admin-header">
+            <h1>Admin Dashboard</h1>
+            <p>Welcome, Admin!</p>
+            <a href="edit-listing.html" class="btn btn-primary">Add New Property</a>
+        </header>
+
+        <section class="page-content">
+            <h1>Manage Property Listings</h1>
+            <a href="edit-listing.html" class="btn btn-primary">Add New Listing</a>
+
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Thumbnail</th>
+                        <th>Title</th>
+                        <th>Price</th>
+                        <th>Status</th>
+                        <th>Date Added</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><img src="../images/placeholder-thumb.jpg" alt="thumbnail" width="50"></td>
+                        <td>Luxury Villa Amaravati</td>
+                        <td>₹2.5 Crore</td>
+                        <td>For Sale</td>
+                        <td>2023-10-26</td>
+                        <td><a href="edit-listing.html?id=1" class="btn btn-sm">Edit</a> <button class="btn btn-sm btn-danger">Delete</button></td>
+                    </tr>
+                    <tr>
+                        <td><img src="../images/placeholder-thumb.jpg" alt="thumbnail" width="50"></td>
+                        <td>Modern Apartment Downtown</td>
+                        <td>₹85 Lakhs</td>
+                        <td>Sold</td>
+                        <td>2023-10-20</td>
+                        <td><a href="edit-listing.html?id=2" class="btn btn-sm">Edit</a> <button class="btn btn-sm btn-danger">Delete</button></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="pagination">
+                <p>Pagination controls here (e.g., Prev, 1, 2, 3, Next)</p>
+            </div>
+        </section>
+    </div>
+
+    <script src="../js/admin-main.js" defer></script>
+</body>
+</html>
