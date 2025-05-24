@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Property Details - Vara Real Estate</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <header>
+        <div>Vara Real Estate</div>
+        <nav>
+            <ul>
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="properties.html">Properties</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="property-detail-page">
+        <h1>Elegant Riverside Villa</h1>
+        <p class="price">₹1.2 Crore</p>
+
+        <section class="image-gallery">
+            <img src="../images/placeholder-property.jpg" alt="Main property view" id="main-property-image">
+            <div class="thumbnails">
+                <img src="../images/placeholder-property.jpg" alt="Property thumbnail 1" class="thumbnail">
+                <img src="../images/placeholder-property.jpg" alt="Property thumbnail 2" class="thumbnail">
+                <img src="../images/placeholder-property.jpg" alt="Property thumbnail 3" class="thumbnail">
+            </div>
+        </section>
+
+        <section class="property-info">
+            <article class="description">
+                <h2>About this Property</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nisl nec ultricies lacinia, nunc nisl aliquam nisl, eget aliquam nisl nisl sit amet nisl. Sed euismod, nisl nec ultricies lacinia, nunc nisl aliquam nisl, eget aliquam nisl nisl sit amet nisl.</p>
+                <p>Nullam Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nisl nec ultricies lacinia, nunc nisl aliquam nisl, eget aliquam nisl nisl sit amet nisl. Cras Vitae metus Dixam Placerat facibus curabitur Test vitae diam.</p>
+            </article>
+
+            <div class="features">
+                <h2>Key Features</h2>
+                <ul>
+                    <li><strong>Area:</strong> 2200 sqft</li>
+                    <li><strong>Bedrooms:</strong> 4</li>
+                    <li><strong>Bathrooms:</strong> 3</li>
+                    <li><strong>Facing:</strong> East</li>
+                    <li><strong>Amenities:</strong> Swimming Pool, Garden, Security</li>
+                </ul>
+            </div>
+
+            <div class="location-map">
+                <h2>Location</h2>
+                <p><strong>Address:</strong> 123 River View Road, Amaravati, Andhra Pradesh</p>
+                <div id="map-placeholder" style="width:100%; height:300px; background-color:#eee;">Map will be here</div>
+            </div>
+        </section>
+
+        <section class="inquiry-form">
+            <h2>Request More Information</h2>
+            <form>
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="phone">Phone:</label>
+                <input type="tel" id="phone" name="phone">
+
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" rows="4" required></textarea>
+
+                <button type="submit" class="btn">Send Inquiry</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2023 Vara Real Estate and Constructions. All rights reserved.</p>
+        <div>
+            <a href="#">Facebook</a> | <a href="#">Instagram</a> | <a href="#">Twitter</a>
+        </div>
+        <ul>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Terms of Service</a></li>
+        </ul>
+    </footer>
+
+    <script src="../js/main.js" defer></script>
+</body>
+</html>

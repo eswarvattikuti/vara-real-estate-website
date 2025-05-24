@@ -1,0 +1,539 @@
+/* 1. Global Styles & Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Lato', 'Open Sans', Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--white); /* Using white as base, can change to light-grey */
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block; /* Removes extra space below images */
+}
+
+a {
+    text-decoration: none;
+    color: var(--primary-color);
+}
+
+ul {
+    list-style-type: none;
+}
+
+/* 2. Color Palette (CSS Variables) */
+:root {
+    --primary-color: #1B5E20; /* Andhra Green */
+    --secondary-color: #f0ead6; /* Light cream/beige */
+    --accent-color: #FFC107; /* Gold/yellow */
+    --text-color: #333333; /* Dark grey for text */
+    --light-grey: #f4f4f4; /* For backgrounds or borders */
+    --white: #ffffff;
+    --dark-grey: #555; /* For less prominent text */
+}
+
+/* 3. Utility Classes */
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.btn {
+    display: inline-block;
+    background-color: var(--primary-color);
+    color: var(--white);
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #144618; /* Darker shade of primary */
+}
+
+/* 4. Header & Navigation */
+header {
+    background-color: var(--white);
+    padding: 15px 0;
+    border-bottom: 1px solid var(--light-grey);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header div:first-child { /* Logo placeholder */
+    font-size: 1.8em;
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+nav ul {
+    display: flex;
+}
+
+nav li {
+    margin-left: 25px;
+}
+
+nav a {
+    color: var(--text-color);
+    font-weight: 500;
+    padding: 5px 0;
+    /* Consider a subtle border-bottom or top inspired by temple gopuram lines for nav items on hover/active */
+}
+
+nav a:hover, nav a.active {
+    color: var(--primary-color);
+    border-bottom: 2px solid var(--primary-color); /* Example hover/active style */
+}
+
+/* 5. Main Content Sections */
+section {
+    padding: 40px 0;
+}
+
+main > h1, /* For page titles like "Our Properties" */
+section h1, section h2 {
+    color: var(--primary-color);
+    margin-bottom: 20px;
+    text-align: center;
+    /* Section titles could have a subtle underline or a small icon inspired by local art forms next to them. */
+}
+
+main > h1 {
+    font-size: 2.5em;
+    margin-bottom: 30px;
+}
+
+section h2 {
+    font-size: 2em;
+}
+
+/* 6. Hero Section */
+.hero {
+    background-color: var(--secondary-color); /* Placeholder background */
+    /* background-image: url('../images/placeholder-hero.jpg'); */ /* Uncomment when hero image is available */
+    background-size: cover;
+    background-position: center;
+    min-height: 60vh; /* Adjusted from 70vh for a slightly smaller default */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 20px; /* Ensure padding for text content */
+    /* Cultural Comment: Background image for hero. A faint Kalamkari-style pattern overlay could be added later. */
+}
+
+.hero div {
+    background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent overlay for text readability */
+    padding: 30px;
+    border-radius: 8px;
+}
+
+
+.hero h1 {
+    font-size: 2.8em;
+    color: var(--primary-color);
+    margin-bottom: 15px;
+}
+
+.hero p {
+    font-size: 1.2em;
+    color: var(--dark-grey);
+}
+
+/* 7. Property Cards */
+.property-listings-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+}
+
+.property-card {
+    border: 1px solid var(--light-grey);
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    padding: 15px;
+    background-color: var(--white);
+    transition: box-shadow 0.3s ease;
+}
+
+.property-card:hover {
+    box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+}
+
+.property-card img {
+    width: 100%;
+    height: 200px; /* Fixed height for uniform card images */
+    object-fit: cover; /* Ensures image covers the area without distortion */
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+.property-card h3 {
+    font-size: 1.4em;
+    color: var(--primary-color);
+    margin-bottom: 8px;
+}
+
+.property-card p {
+    font-size: 0.95em;
+    color: var(--dark-grey);
+    margin-bottom: 15px;
+}
+
+/* 8. Buttons (.btn) - Already styled in Utility Classes */
+
+/* 9. Forms (General Styling) */
+form {
+    max-width: 600px;
+    margin: 20px auto; /* Center forms if they are standalone */
+    padding: 20px;
+    background-color: var(--white);
+    border-radius: 8px;
+    /* border: 1px solid var(--light-grey); */ /* Optional border for forms */
+}
+
+form label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: var(--text-color);
+}
+
+form input[type="text"],
+form input[type="email"],
+form input[type="tel"],
+form input[type="subject"], /* Added input[type="subject"] */
+form textarea,
+form select {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-family: inherit;
+    font-size: 1em;
+}
+
+form input[type="text"]:focus,
+form input[type="email"]:focus,
+form input[type="tel"]:focus,
+form input[type="subject"]:focus,
+form textarea:focus,
+form select:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 5px rgba(27, 94, 32, 0.3);
+}
+
+form button[type="submit"] {
+    width: 100%;
+    margin-top: 10px;
+}
+
+/* 10. Footer */
+footer {
+    background-color: var(--dark-grey);
+    color: var(--white);
+    padding: 30px 0;
+    text-align: center;
+}
+
+footer p {
+    margin-bottom: 10px;
+    font-size: 0.9em;
+}
+
+footer div a { /* Social media links */
+    color: var(--white);
+    margin: 0 10px;
+    font-size: 1.2em;
+}
+
+footer div a:hover {
+    color: var(--accent-color);
+}
+
+footer ul { /* Footer nav links */
+    margin-top: 10px;
+}
+footer ul li {
+    display: inline-block;
+    margin: 0 10px;
+}
+footer ul li a {
+    color: var(--light-grey);
+    font-size: 0.9em;
+}
+footer ul li a:hover {
+    color: var(--white);
+    text-decoration: underline;
+}
+
+/* 11. Basic Responsiveness */
+@media (max-width: 768px) {
+    header .container {
+        flex-direction: column;
+    }
+    header div:first-child { /* Logo */
+        margin-bottom: 10px;
+    }
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+    nav li {
+        margin-left: 0;
+        margin-bottom: 10px;
+    }
+    .hero h1 {
+        font-size: 2.2em;
+    }
+    .hero p {
+        font-size: 1em;
+    }
+    main > h1 {
+        font-size: 2em;
+    }
+    section h2 {
+        font-size: 1.7em;
+    }
+
+    .property-listings-container {
+        grid-template-columns: 1fr; /* Stack cards on smaller screens */
+    }
+}
+
+/* 12. Page-Specific Minor Adjustments (Placeholders) */
+
+/* Properties Page - filters.html */
+.filters {
+    background-color: var(--light-grey);
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 30px;
+    display: flex;
+    flex-wrap: wrap; /* Allow items to wrap on smaller screens */
+    gap: 15px; /* Space between filter elements */
+    align-items: center; /* Align items vertically */
+}
+
+.filters h3 {
+    width: 100%; /* Make title span full width */
+    margin-bottom: 10px;
+    text-align: left;
+    color: var(--primary-color);
+}
+
+.filters select, .filters button {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-family: inherit;
+    flex-grow: 1; /* Allow select and button to grow */
+}
+
+.filters button {
+    background-color: var(--accent-color);
+    color: var(--text-color);
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    flex-grow: 0.5; /* Button might not need to grow as much */
+}
+
+.filters button:hover {
+    background-color: #e6ac00; /* Darker accent */
+}
+
+/* Property Detail Page - property-detail.html */
+.property-detail-page .image-gallery {
+    margin-bottom: 30px;
+}
+.property-detail-page #main-property-image {
+    width: 100%;
+    height: auto;
+    max-height: 500px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+.property-detail-page .thumbnails {
+    display: flex;
+    gap: 10px;
+    justify-content: center; /* Center thumbnails */
+}
+.property-detail-page .thumbnails img.thumbnail {
+    width: 100px;
+    height: 75px;
+    object-fit: cover;
+    border-radius: 4px;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: border-color 0.3s ease;
+}
+.property-detail-page .thumbnails img.thumbnail:hover,
+.property-detail-page .thumbnails img.thumbnail.active {
+    border-color: var(--primary-color);
+}
+
+.property-info {
+    display: grid;
+    grid-template-columns: 2fr 1fr; /* Description takes more space */
+    gap: 30px;
+    margin-bottom: 30px;
+}
+
+.property-info .description h2,
+.property-info .features h2,
+.property-info .location-map h2 {
+    text-align: left;
+    font-size: 1.5em;
+    margin-bottom: 15px;
+    color: var(--primary-color);
+}
+
+.property-info .features ul li {
+    margin-bottom: 8px;
+}
+
+.location-map #map-placeholder {
+    border: 1px solid var(--light-grey);
+    border-radius: 5px;
+}
+
+.inquiry-form {
+    background-color: var(--secondary-color);
+    padding: 30px;
+    border-radius: 8px;
+}
+.inquiry-form h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+@media (max-width: 992px) { /* For property-info grid */
+    .property-info {
+        grid-template-columns: 1fr; /* Stack on medium screens */
+    }
+}
+
+
+/* About Us Page - about.html */
+.about-page .intro-content blockquote {
+    margin: 20px auto;
+    padding: 15px;
+    border-left: 4px solid var(--primary-color);
+    background-color: var(--secondary-color);
+    font-style: italic;
+    color: var(--dark-grey);
+    max-width: 80%;
+}
+
+.about-page .heritage-connection,
+.about-page .team-preview {
+    overflow: hidden; /* To contain floats */
+    margin-bottom: 30px;
+}
+
+.about-page .heritage-connection img,
+.about-page .team-preview img {
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.about-page .vision-values ul {
+    list-style-type: disc; /* Use bullets for this list */
+    padding-left: 20px;
+}
+.about-page .vision-values ul li {
+    margin-bottom: 10px;
+}
+
+/* Contact Page - contact.html */
+.contact-page .contact-details p {
+    margin-bottom: 10px;
+    font-size: 1.1em;
+}
+.contact-page .contact-details p strong {
+    color: var(--primary-color);
+}
+.contact-page .map-section #google-map-placeholder {
+    border: 1px solid var(--light-grey);
+    border-radius: 5px;
+}
+
+/* Pagination */
+.pagination {
+    text-align: center;
+    margin-top: 30px;
+}
+.pagination ul {
+    display: inline-block;
+}
+.pagination li {
+    display: inline-block;
+    margin: 0 5px;
+}
+.pagination li a {
+    display: block;
+    padding: 8px 15px;
+    border: 1px solid var(--light-grey);
+    color: var(--primary-color);
+    border-radius: 4px;
+}
+.pagination li a:hover, .pagination li a.active {
+    background-color: var(--primary-color);
+    color: var(--white);
+    border-color: var(--primary-color);
+}
+
+/* Cultural snippet on homepage */
+.cultural-snippet {
+    background-color: var(--secondary-color);
+    padding: 40px 20px; /* Add horizontal padding */
+}
+.cultural-snippet div {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    max-width: 1100px; /* Ensure it aligns with container */
+    margin: 0 auto; /* Center it */
+}
+.cultural-snippet img {
+    max-width: 250px; /* Control image size */
+    height: auto;
+    border-radius: 8px;
+}
+.cultural-snippet p {
+    flex: 1; /* Allow text to take remaining space */
+    text-align: left;
+}
+
+@media (max-width: 768px) {
+    .cultural-snippet div {
+        flex-direction: column;
+        text-align: center;
+    }
+    .cultural-snippet img {
+        margin-bottom: 15px;
+    }
+}
