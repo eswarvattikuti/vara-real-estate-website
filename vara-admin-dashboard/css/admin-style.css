@@ -1,0 +1,434 @@
+/* 1. Global Styles & Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #f0f2f5;
+    color: #333;
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+a {
+    text-decoration: none;
+    color: #007bff;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+ul {
+    list-style-type: none;
+}
+
+/* 2. Login Page (login.html specific) */
+.login-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #e9ecef;
+}
+
+.login-container {
+    background: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+}
+
+.login-container h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 1.8em;
+    color: #343a40;
+}
+
+.login-container label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.login-container input[type="text"],
+.login-container input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.login-container .btn { /* Specific button styling for login form */
+    width: 100%;
+    padding: 10px;
+}
+
+/* 3. Main Admin Layout */
+.sidebar {
+    width: 250px;
+    background-color: #343a40; /* Dark grey */
+    color: #fff;
+    position: fixed;
+    height: 100%;
+    padding-top: 20px;
+    overflow-y: auto; /* For scrollable sidebar if content exceeds height */
+}
+
+.sidebar h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 1.5em;
+}
+
+.sidebar ul {
+    padding: 0;
+}
+
+.sidebar ul li a {
+    display: block;
+    padding: 12px 15px;
+    color: #adb5bd; /* Light grey text */
+    border-bottom: 1px solid #495057; /* Slightly darker border */
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.sidebar ul li a:hover,
+.sidebar ul li a.active {
+    background-color: #495057; /* Medium grey background on hover/active */
+    color: #fff;
+    text-decoration: none;
+}
+
+.main-content {
+    margin-left: 250px;
+    padding: 20px;
+    background-color: #f0f2f5; /* Ensures main content has the light grey background */
+    min-height: 100vh; /* Ensures background covers full height */
+}
+
+.admin-header {
+    background: #fff;
+    padding: 15px;
+    border-bottom: 1px solid #dee2e6; /* Light border */
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 5px; /* Optional: for slightly rounded corners */
+}
+
+.admin-header h1 {
+    font-size: 1.8em;
+    margin: 0;
+    color: #343a40;
+}
+.admin-header p {
+    margin: 0;
+    color: #495057;
+}
+
+/* 4. Summary Cards (.summary-card on index.html) */
+.dashboard-summary {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-bottom: 30px;
+}
+
+.summary-cards-container { /* Added container for better control if needed */
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.summary-card {
+    background: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    flex: 1;
+    min-width: 200px; /* Ensures cards have a minimum width */
+    border-left: 4px solid #007bff; /* Example accent border */
+}
+
+.summary-card h3 {
+    margin-top: 0;
+    font-size: 1.2em;
+    color: #495057;
+    margin-bottom: 10px;
+}
+
+.summary-card .count {
+    font-size: 2em;
+    font-weight: bold;
+    margin: 10px 0;
+    color: #343a40;
+}
+
+.summary-card a {
+    font-size: 0.9em;
+    color: #007bff;
+}
+
+/* 5. Tables (.data-table) */
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    border-radius: 5px; /* Optional: for slightly rounded table corners */
+    overflow: hidden; /* Ensures box-shadow and border-radius apply correctly */
+}
+
+.data-table th,
+.data-table td {
+    border: 1px solid #dee2e6;
+    padding: 10px 12px;
+    text-align: left;
+    vertical-align: middle; /* Good for mixed content like images and text */
+}
+
+.data-table th {
+    background-color: #f8f9fa; /* Very light grey for headers */
+    font-weight: bold;
+    color: #495057;
+}
+
+.data-table tbody tr:nth-child(even) {
+    background-color: #f8f9fa;
+}
+
+.data-table tbody tr:hover {
+    background-color: #e9ecef; /* Light hover effect for rows */
+}
+
+.data-table img {
+    max-width: 50px;
+    height: auto;
+    border-radius: 3px;
+    display: block; /* Removes extra space below image if any */
+}
+
+.data-table select {
+    padding: 5px 8px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    background-color: #fff; /* Ensure select background is white */
+}
+
+/* 6. Forms (general styling for edit forms in .page-content) */
+.page-content { /* Generic container for main content area within pages */
+    background: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.page-content h1 {
+    font-size: 1.6em;
+    color: #343a40;
+    margin-bottom: 20px;
+}
+
+.page-content form label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #495057;
+}
+
+.page-content form input[type="text"],
+.page-content form input[type="number"],
+.page-content form input[type="file"],
+.page-content form textarea,
+.page-content form select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-family: inherit; /* Ensures form elements inherit body font */
+    font-size: 1em;
+}
+
+.page-content form input[type="text"]:focus,
+.page-content form input[type="number"]:focus,
+.page-content form input[type="file"]:focus,
+.page-content form textarea:focus,
+.page-content form select:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+.page-content form textarea {
+    min-height: 100px;
+    resize: vertical; /* Allow vertical resizing */
+}
+
+.page-content form #main_image_preview {
+    margin-top: 5px;
+    max-height: 150px;
+    max-width: 100%; /* Ensure it's responsive */
+    border: 1px solid #eee;
+    padding: 5px;
+    border-radius: 4px;
+    display: block; /* Make it a block to handle margins correctly */
+}
+
+/* 7. Buttons (.btn, .btn-primary, .btn-sm, .btn-danger) */
+.btn {
+    background-color: #007bff; /* Primary blue */
+    color: white;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+    transition: background-color 0.2s ease;
+    font-size: 0.95em; /* Slightly smaller base button font */
+}
+
+.btn:hover {
+    background-color: #0056b3; /* Darker blue */
+    text-decoration: none; /* Ensure underline doesn't reappear */
+    color: white;
+}
+
+.btn-primary {
+    background-color: #28a745; /* Green */
+}
+
+.btn-primary:hover {
+    background-color: #1e7e34; /* Darker green */
+}
+
+.btn-danger {
+    background-color: #dc3545; /* Red */
+}
+
+.btn-danger:hover {
+    background-color: #c82333; /* Darker red */
+}
+
+.btn-sm {
+    padding: 5px 10px;
+    font-size: 0.85em;
+}
+
+.admin-header .btn { /* For "Add New Property" button in header */
+    margin-left: auto; /* Pushes it to the right */
+}
+
+.page-content .btn-primary { /* Spacing for "Add New Listing" on listings page or "Save Property" on edit page */
+    margin-bottom: 20px;
+}
+
+/* Filters on inquiries page */
+.filters {
+    margin-bottom: 20px;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.filters input[type="text"], .filters select {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    flex-grow: 1;
+}
+.filters button {
+    flex-grow: 0; /* Don't let filter button grow as much */
+}
+
+/* Pagination placeholder */
+.pagination {
+    margin-top: 20px;
+    padding: 10px;
+    text-align: center;
+    background-color: #fff;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+
+/* 8. Basic Responsiveness (Conceptual for Admin) */
+@media (max-width: 768px) {
+    .sidebar {
+        width: 100%;
+        height: auto;
+        position: relative;
+        margin-bottom: 15px;
+    }
+
+    .sidebar h2 {
+        font-size: 1.3em;
+    }
+
+    .sidebar ul {
+        display: flex; /* For horizontal layout on small screens */
+        overflow-x: auto; /* Allow horizontal scrolling if many items */
+    }
+
+    .sidebar ul li a {
+        border-bottom: none; /* Remove bottom border */
+        border-right: 1px solid #495057; /* Add right border for separation */
+        padding: 10px; /* Adjust padding */
+        white-space: nowrap; /* Prevent text wrapping */
+    }
+    .sidebar ul li:last-child a {
+        border-right: none;
+    }
+
+    .main-content {
+        margin-left: 0;
+        padding: 15px;
+    }
+
+    .dashboard-summary {
+        flex-direction: column;
+    }
+
+    .summary-card {
+        min-width: 100%; /* Make cards full width */
+        margin-bottom: 15px;
+    }
+
+    .admin-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .admin-header h1 {
+        font-size: 1.5em;
+        margin-bottom: 10px;
+    }
+
+    .admin-header p {
+        margin-bottom: 10px;
+    }
+    .admin-header .btn {
+        margin-left: 0;
+        margin-top: 10px;
+        width: 100%; /* Make button full width */
+    }
+
+    .data-table th, .data-table td {
+        padding: 8px;
+        font-size: 0.9em; /* Smaller font for tables on small screens */
+    }
+    /* Consider display:block for table rows/cells for very small screens if horizontal scroll is not desired */
+}
