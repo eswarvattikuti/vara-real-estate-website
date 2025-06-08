@@ -1,20 +1,21 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add/Edit Property - Admin Dashboard</title>
-    <link rel="stylesheet" href="../css/admin-style.css">
+    <title>{{ form_title|default:"Add/Edit Property" }} - Admin Dashboard</title>
+    <link rel="stylesheet" href="{% static 'css/admin-style.css' %}">
 </head>
 <body>
     <aside class="sidebar">
         <h2>Vara Admin</h2>
         <ul>
-            <li><a href="../index.html">Dashboard</a></li>
-            <li><a href="listings.html">Property Listings</a></li>
-            <li><a href="inquiries.html">Manage Inquiries</a></li>
+            <li><a href="{% url 'admin_dashboard_overview' %}">Dashboard</a></li>
+            <li><a href="{% url 'admin_property_listings' %}">Property Listings</a></li>
+            <li><a href="{% url 'admin_manage_inquiries' %}">Manage Inquiries</a></li>
             <li><a href="#">Users</a></li>
-            <li><a href="../login.html">Logout</a></li>
+            <li><a href="{% url 'logout' %}">Logout</a></li>
         </ul>
     </aside>
 
@@ -22,73 +23,146 @@
         <header class="admin-header">
             <h1>Admin Dashboard</h1>
             <p>Welcome, Admin!</p>
-            <!-- No "Add New Property" button here as we are on the add/edit page -->
         </header>
 
         <section class="page-content">
-            <h1>Add/Edit Property</h1>
+            <h1>{{ form_title|default:"Add/Edit Property" }}</h1>
 
-            <form id="property-form">
-                <div>
-                    <label for="property_title">Property Title:</label>
-                    <input type="text" id="property_title" name="property_title" required>
+            {% if messages %}
+                <ul class="messages" style="list-style-type: none; padding: 10px; margin-bottom: 15px;">
+                    {% for message in messages %}
+                        <li{% if message.tags %} class="{{ message.tags }}" style="padding: 10px; border-radius: 4px; background-color: #f0f0f0; border-left: 5px solid #4CAF50;"{% endif %}>
+                             {% if message.tags == 'success' %}✔️ {% endif %}
+                             {% if message.tags == 'error' %}❌ {% endif %}
+                            {{ message }}
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+
+            <form id="property-form" method="POST" action="{{ form_action_url }}" enctype="multipart/form-data">
+                {% csrf_token %}
+
+                {% if form.non_field_errors %}
+                    <div class="form-errors" style="color: red; margin-bottom: 10px;">
+                        {% for error in form.non_field_errors %}
+                            <p>{{ error }}</p>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+
+                <div class="form-group">
+                    {{ form.title.label_tag }}
+                    {{ form.title }}
+                    {% if form.title.help_text %}
+                        <small class="form-text text-muted">{{ form.title.help_text }}</small>
+                    {% endif %}
+                    {% for error in form.title.errors %}
+                        <div class="invalid-feedback" style="color: red;">{{ error }}</div>
+                    {% endfor %}
                 </div>
 
-                <div>
-                    <label for="description">Description:</label>
-                    <textarea id="description" name="description" rows="6"></textarea>
+                <div class="form-group">
+                    {{ form.description.label_tag }}
+                    {{ form.description }}
+                    {% if form.description.help_text %}
+                        <small class="form-text text-muted">{{ form.description.help_text }}</small>
+                    {% endif %}
+                    {% for error in form.description.errors %}
+                        <div class="invalid-feedback" style="color: red;">{{ error }}</div>
+                    {% endfor %}
                 </div>
 
-                <div>
-                    <label for="address">Address:</label>
-                    <input type="text" id="address" name="address">
+                <div class="form-group">
+                    {{ form.address.label_tag }}
+                    {{ form.address }}
+                    {% if form.address.help_text %}
+                        <small class="form-text text-muted">{{ form.address.help_text }}</small>
+                    {% endif %}
+                    {% for error in form.address.errors %}
+                        <div class="invalid-feedback" style="color: red;">{{ error }}</div>
+                    {% endfor %}
                 </div>
 
-                <div>
-                    <label for="price">Price (INR):</label>
-                    <input type="number" id="price" name="price" step="50000">
+                <div class="form-group">
+                    {{ form.price.label_tag }}
+                    {{ form.price }}
+                    {% if form.price.help_text %}
+                        <small class="form-text text-muted">{{ form.price.help_text }}</small>
+                    {% endif %}
+                    {% for error in form.price.errors %}
+                        <div class="invalid-feedback" style="color: red;">{{ error }}</div>
+                    {% endfor %}
                 </div>
 
-                <div>
-                    <label for="area">Area (sqft):</label>
-                    <input type="number" id="area" name="area">
+                <div class="form-group">
+                    {{ form.area_sqft.label_tag }}
+                    {{ form.area_sqft }}
+                    {% if form.area_sqft.help_text %}
+                        <small class="form-text text-muted">{{ form.area_sqft.help_text }}</small>
+                    {% endif %}
+                    {% for error in form.area_sqft.errors %}
+                        <div class="invalid-feedback" style="color: red;">{{ error }}</div>
+                    {% endfor %}
                 </div>
 
-                <div>
-                    <label for="bedrooms">Bedrooms:</label>
-                    <input type="number" id="bedrooms" name="bedrooms" min="0">
+                <div class="form-group">
+                    {{ form.bedrooms.label_tag }}
+                    {{ form.bedrooms }}
+                    {% if form.bedrooms.help_text %}
+                        <small class="form-text text-muted">{{ form.bedrooms.help_text }}</small>
+                    {% endif %}
+                    {% for error in form.bedrooms.errors %}
+                        <div class="invalid-feedback" style="color: red;">{{ error }}</div>
+                    {% endfor %}
                 </div>
 
-                <div>
-                    <label for="bathrooms">Bathrooms:</label>
-                    <input type="number" id="bathrooms" name="bathrooms" min="0">
+                <div class="form-group">
+                    {{ form.bathrooms.label_tag }}
+                    {{ form.bathrooms }}
+                    {% if form.bathrooms.help_text %}
+                        <small class="form-text text-muted">{{ form.bathrooms.help_text }}</small>
+                    {% endif %}
+                    {% for error in form.bathrooms.errors %}
+                        <div class="invalid-feedback" style="color: red;">{{ error }}</div>
+                    {% endfor %}
                 </div>
 
-                <div>
-                    <label for="features">Features (comma-separated, e.g., Garden, Pool):</label>
-                    <textarea id="features" name="features" rows="3"></textarea>
+                <div class="form-group">
+                    {{ form.features.label_tag }}
+                    {{ form.features }}
+                    {% if form.features.help_text %}
+                        <small class="form-text text-muted">{{ form.features.help_text }}</small>
+                    {% endif %}
+                    {% for error in form.features.errors %}
+                        <div class="invalid-feedback" style="color: red;">{{ error }}</div>
+                    {% endfor %}
                 </div>
 
-                <div>
-                    <label for="status">Status:</label>
-                    <select id="status" name="status">
-                        <option value="For Sale">For Sale</option>
-                        <option value="Sold">Sold</option>
-                        <option value="Pending">Pending</option>
-                        <option value="Draft">Draft</option>
-                    </select>
+                <div class="form-group">
+                    {{ form.status.label_tag }}
+                    {{ form.status }}
+                    {% if form.status.help_text %}
+                        <small class="form-text text-muted">{{ form.status.help_text }}</small>
+                    {% endif %}
+                    {% for error in form.status.errors %}
+                        <div class="invalid-feedback" style="color: red;">{{ error }}</div>
+                    {% endfor %}
                 </div>
 
-                <div>
-                    <label for="main_image">Main Image:</label>
-                    <input type="file" id="main_image" name="main_image" accept="image/*">
-                    <!-- Placeholder for image preview -->
-                    <img src="#" alt="Main image preview" id="main_image_preview" style="max-width: 200px; display: none; margin-top: 10px;">
-                </div>
-
-                <div>
-                    <label for="gallery_images">Gallery Images (select multiple):</label>
-                    <input type="file" id="gallery_images" name="gallery_images[]" multiple accept="image/*">
+                <div class="form-group">
+                    {{ form.main_image.label_tag }}
+                    {{ form.main_image }}
+                    {% if form.instance.main_image and form.instance.main_image.url %}
+                        <p style="margin-top: 5px;">Current image: <a href="{{ form.instance.main_image.url }}" target="_blank">{{ form.instance.main_image.name }}</a></p>
+                        <img src="{{ form.instance.main_image.url }}" alt="Current main image for {{ form.instance.title|default:'property' }}" style="max-height: 150px; max-width: 200px; display: block; margin-top: 10px; border: 1px solid #eee; border-radius: 4px;">
+                    {% endif %}
+                    {% if form.main_image.help_text %}
+                        <small class="form-text text-muted">{{ form.main_image.help_text }}</small>
+                    {% endif %}
+                    {% for error in form.main_image.errors %}
+                        <div class="invalid-feedback" style="color: red;">{{ error }}</div>
+                    {% endfor %}
                 </div>
 
                 <div>
@@ -98,6 +172,6 @@
         </section>
     </div>
 
-    <script src="../js/admin-main.js" defer></script>
+    <script src="{% static 'js/admin-main.js' %}" defer></script>
 </body>
 </html>

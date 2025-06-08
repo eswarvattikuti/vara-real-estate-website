@@ -1,20 +1,21 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vara Real Estate - Amaravati</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body>
     <header>
         <div>Vara Real Estate</div>
         <nav>
             <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="pages/properties.html">Properties</a></li>
-                <li><a href="pages/about.html">About Us</a></li>
-                <li><a href="pages/contact.html">Contact</a></li>
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <li><a href="{% url 'property_list' %}">Properties</a></li>
+                <li><a href="{% url 'about' %}">About Us</a></li>
+                <li><a href="{% url 'contact' %}">Contact</a></li>
             </ul>
         </nav>
     </header>
@@ -31,22 +32,22 @@
             <h2>Featured Properties</h2>
             <div class="property-listings-container">
                 <article class="property-card">
-                    <img src="images/placeholder-property.jpg" alt="Featured Property 1">
+                    <img src="https://unsplash.com/photos/i1OZyG83-eo/download?force=true" alt="Modern home in Amaravati">
                     <h3>Modern Villa in Amaravati</h3>
                     <p>3 Bed, 2 Bath, 1800 sqft</p>
-                    <a href="pages/property-detail.html" class="btn">View Details</a>
+                    <a href="{% url 'property_detail_placeholder' %}" class="btn">View Details</a>
                 </article>
                 <article class="property-card">
-                    <img src="images/placeholder-property.jpg" alt="Featured Property 2">
+                    <img src="https://unsplash.com/photos/XBZIhvcOsyQ/download?force=true" alt="Luxury Apartment with River View">
                     <h3>Luxury Apartment with River View</h3>
                     <p>4 Bed, 3 Bath, 2200 sqft</p>
-                    <a href="pages/property-detail.html" class="btn">View Details</a>
+                    <a href="{% url 'property_detail_placeholder' %}" class="btn">View Details</a>
                 </article>
                 <article class="property-card">
-                    <img src="images/placeholder-property.jpg" alt="Featured Property 3">
+                    <img src="https://unsplash.com/photos/XQ3tWSSGkl0/download?force=true" alt="Spacious Plot for Custom Build">
                     <h3>Spacious Plot for Custom Build</h3>
                     <p>5000 sqft Plot</p>
-                    <a href="pages/property-detail.html" class="btn">View Details</a>
+                    <a href="{% url 'property_detail_placeholder' %}" class="btn">View Details</a>
                 </article>
             </div>
         </section>
@@ -54,7 +55,7 @@
         <section class="cultural-snippet">
             <h2>Amaravati's Heritage</h2>
             <div>
-                <img src="images/placeholder-cultural.jpg" alt="Cultural Element">
+                <img src="https://unsplash.com/photos/rJwiPhTXwnE/download?force=true" alt="Kalamkari pattern detail">
                 <p>Amaravati, a city pulsating with a rich tapestry of history and culture, stands as a testament to India's glorious past. Its legacy, deeply embedded in ancient traditions and architectural marvels, inspires us at Vara Real Estate. We are committed to developing properties that not only offer modern comforts but also resonate with the city's profound heritage, ensuring that every structure we build is a harmonious blend of the contemporary and the timeless.</p>
             </div>
         </section>
@@ -71,6 +72,6 @@
         </ul>
     </footer>
 
-    <script src="js/main.js" defer></script>
+    <script src="{% static 'js/main.js' %}" defer></script>
 </body>
 </html>

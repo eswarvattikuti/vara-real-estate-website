@@ -1,20 +1,21 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Manage Inquiries - Admin Dashboard</title>
-    <link rel="stylesheet" href="../css/admin-style.css">
+    <link rel="stylesheet" href="{% static 'css/admin-style.css' %}">
 </head>
 <body>
     <aside class="sidebar">
         <h2>Vara Admin</h2>
         <ul>
-            <li><a href="../index.html">Dashboard</a></li>
-            <li><a href="listings.html">Property Listings</a></li>
-            <li><a href="inquiries.html">Manage Inquiries</a></li>
+            <li><a href="{% url 'admin_dashboard_overview' %}">Dashboard</a></li>
+            <li><a href="{% url 'admin_property_listings' %}">Property Listings</a></li>
+            <li><a href="{% url 'admin_manage_inquiries' %}">Manage Inquiries</a></li>
             <li><a href="#">Users</a></li>
-            <li><a href="../login.html">Logout</a></li>
+            <li><a href="{% url 'logout' %}">Logout</a></li>
         </ul>
     </aside>
 
@@ -22,7 +23,7 @@
         <header class="admin-header">
             <h1>Admin Dashboard</h1>
             <p>Welcome, Admin!</p>
-            <a href="edit-listing.html" class="btn btn-primary">Add New Property</a>
+            <a href="{% url 'admin_add_property' %}" class="btn btn-primary">Add New Property</a>
         </header>
 
         <section class="page-content">
@@ -91,6 +92,6 @@
         </section>
     </div>
 
-    <script src="../js/admin-main.js" defer></script>
+    <script src="{% static 'js/admin-main.js' %}" defer></script>
 </body>
 </html>

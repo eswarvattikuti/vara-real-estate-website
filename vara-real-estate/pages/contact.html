@@ -1,20 +1,21 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Us - Vara Real Estate</title>
-    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body>
     <header>
         <div>Vara Real Estate</div>
         <nav>
             <ul>
-                <li><a href="../index.html">Home</a></li>
-                <li><a href="properties.html">Properties</a></li>
-                <li><a href="about.html">About Us</a></li>
-                <li><a href="contact.html">Contact</a></li>
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <li><a href="{% url 'property_list' %}">Properties</a></li>
+                <li><a href="{% url 'about' %}">About Us</a></li>
+                <li><a href="{% url 'contact' %}">Contact</a></li>
             </ul>
         </nav>
     </header>
@@ -70,6 +71,6 @@
         </ul>
     </footer>
 
-    <script src="../js/main.js" defer></script>
+    <script src="{% static 'js/main.js' %}" defer></script>
 </body>
 </html>

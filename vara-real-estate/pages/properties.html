@@ -1,20 +1,21 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Properties - Vara Real Estate</title>
-    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body>
     <header>
         <div>Vara Real Estate</div>
         <nav>
             <ul>
-                <li><a href="../index.html">Home</a></li>
-                <li><a href="properties.html">Properties</a></li>
-                <li><a href="about.html">About Us</a></li>
-                <li><a href="contact.html">Contact</a></li>
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <li><a href="{% url 'property_list' %}">Properties</a></li>
+                <li><a href="{% url 'about' %}">About Us</a></li>
+                <li><a href="{% url 'contact' %}">Contact</a></li>
             </ul>
         </nav>
     </header>
@@ -47,52 +48,52 @@
         <section class="property-grid">
             <div class="property-listings-container">
                 <article class="property-card">
-                    <img src="../images/placeholder-property.jpg" alt="Property Listing 1">
+                    <img src="https://unsplash.com/photos/i1OZyG83-eo/download?force=true" alt="Spacious Apartment Near Krishna River">
                     <h3>Spacious Apartment Near Krishna River</h3>
                     <p>2 Bed, 2 Bath, 1200 sqft</p>
-                    <a href="property-detail.html" class="btn">View Details</a>
+                    <a href="{% url 'property_detail_placeholder' %}" class="btn">View Details</a>
                 </article>
                 <article class="property-card">
-                    <img src="../images/placeholder-property.jpg" alt="Property Listing 2">
+                    <img src="https://unsplash.com/photos/XBZIhvcOsyQ/download?force=true" alt="Modern Villa with Garden">
                     <h3>Modern Villa with Garden</h3>
                     <p>3 Bed, 3 Bath, 2000 sqft</p>
-                    <a href="property-detail.html" class="btn">View Details</a>
+                    <a href="{% url 'property_detail_placeholder' %}" class="btn">View Details</a>
                 </article>
                 <article class="property-card">
-                    <img src="../images/placeholder-property.jpg" alt="Property Listing 3">
+                    <img src="https://unsplash.com/photos/XQ3tWSSGkl0/download?force=true" alt="Commercial Plot in City Center">
                     <h3>Commercial Plot in City Center</h3>
                     <p>3000 sqft Plot</p>
-                    <a href="property-detail.html" class="btn">View Details</a>
+                    <a href="{% url 'property_detail_placeholder' %}" class="btn">View Details</a>
                 </article>
                 <article class="property-card">
-                    <img src="../images/placeholder-property.jpg" alt="Property Listing 4">
+                    <img src="{% static 'images/placeholder-property.jpg' %}" alt="Luxury Duplex with Terrace">
                     <h3>Luxury Duplex with Terrace</h3>
                     <p>4 Bed, 4 Bath, 2500 sqft</p>
-                    <a href="property-detail.html" class="btn">View Details</a>
+                    <a href="{% url 'property_detail_placeholder' %}" class="btn">View Details</a>
                 </article>
                 <article class="property-card">
-                    <img src="../images/placeholder-property.jpg" alt="Property Listing 5">
+                    <img src="https://unsplash.com/photos/i1OZyG83-eo/download?force=true" alt="Affordable Studio Apartment">
                     <h3>Affordable Studio Apartment</h3>
                     <p>1 Bed, 1 Bath, 800 sqft</p>
-                    <a href="property-detail.html" class="btn">View Details</a>
+                    <a href="{% url 'property_detail_placeholder' %}" class="btn">View Details</a>
                 </article>
                 <article class="property-card">
-                    <img src="../images/placeholder-property.jpg" alt="Property Listing 6">
+                    <img src="https://unsplash.com/photos/XBZIhvcOsyQ/download?force=true" alt="Residential Land for Custom Home">
                     <h3>Residential Land for Custom Home</h3>
                     <p>4000 sqft Plot</p>
-                    <a href="property-detail.html" class="btn">View Details</a>
+                    <a href="{% url 'property_detail_placeholder' %}" class="btn">View Details</a>
                 </article>
                  <article class="property-card">
-                    <img src="../images/placeholder-property.jpg" alt="Property Listing 7">
+                    <img src="https://unsplash.com/photos/XQ3tWSSGkl0/download?force=true" alt="Penthouse with Panoramic Views">
                     <h3>Penthouse with Panoramic Views</h3>
                     <p>3 Bed, 3 Bath, 2800 sqft</p>
-                    <a href="property-detail.html" class="btn">View Details</a>
+                    <a href="{% url 'property_detail_placeholder' %}" class="btn">View Details</a>
                 </article>
                 <article class="property-card">
-                    <img src="../images/placeholder-property.jpg" alt="Property Listing 8">
+                    <img src="https://unsplash.com/photos/i1OZyG83-eo/download?force=true" alt="Farm Land Outside City Limits">
                     <h3>Farm Land Outside City Limits</h3>
                     <p>2 Acres Plot</p>
-                    <a href="property-detail.html" class="btn">View Details</a>
+                    <a href="{% url 'property_detail_placeholder' %}" class="btn">View Details</a>
                 </article>
             </div>
         </section>
@@ -119,6 +120,6 @@
         </ul>
     </footer>
 
-    <script src="../js/main.js" defer></script>
+    <script src="{% static 'js/main.js' %}" defer></script>
 </body>
 </html>

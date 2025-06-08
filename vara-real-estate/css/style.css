@@ -5,39 +5,65 @@
     box-sizing: border-box;
 }
 
+/* Updated Body with Body Font Family */
 body {
-    font-family: 'Lato', 'Open Sans', Arial, sans-serif;
-    font-size: 16px;
-    line-height: 1.6;
+    font-family: 'Open Sans', Arial, sans-serif; /* Primary body font */
+    font-size: 16px; /* Base font size */
+    line-height: 1.6; /* Comfortable line height */
     color: var(--text-color);
-    background-color: var(--white); /* Using white as base, can change to light-grey */
+    background-color: var(--white);
+    position: relative;
 }
 
 img {
     max-width: 100%;
     height: auto;
-    display: block; /* Removes extra space below images */
+    display: block;
 }
 
+/* Updated Links for Font Inheritance and Hover State */
 a {
     text-decoration: none;
-    color: var(--primary-color);
+    color: var(--primary-color); /* Default link color */
+    font-family: inherit; /* Ensure links inherit body font */
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: #123f16; /* Darker shade of primary for hover, can also use accent */
 }
 
 ul {
     list-style-type: none;
 }
 
-/* 2. Color Palette (CSS Variables) */
+/* 2. Color Palette (CSS Variables) - Confirmed */
 :root {
-    --primary-color: #1B5E20; /* Andhra Green */
+    --primary-color: #1B5E20;   /* Andhra Green */
     --secondary-color: #f0ead6; /* Light cream/beige */
-    --accent-color: #FFC107; /* Gold/yellow */
-    --text-color: #333333; /* Dark grey for text */
-    --light-grey: #f4f4f4; /* For backgrounds or borders */
+    --accent-color: #FFC107;    /* Gold/yellow */
+    --text-color: #333333;      /* Dark grey for text */
+    --light-grey: #f4f4f4;      /* For backgrounds or borders */
     --white: #ffffff;
-    --dark-grey: #555; /* For less prominent text */
+    --dark-grey: #555555;      /* For less prominent text (ensured 6 chars) */
 }
+
+/* Headings Font Family & Hierarchy */
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Lato', Arial, sans-serif; /* Primary heading font */
+    color: var(--text-color); /* Default heading color, can be primary for more emphasis */
+    margin-bottom: 0.6em; /* Adjusted margin */
+    line-height: 1.3;
+    font-weight: 700; /* Default bold for headings */
+}
+
+h1 { font-size: 2.8em; } /* Slightly increased from 2.5em */
+h2 { font-size: 2.2em; } /* Slightly increased from 2em */
+h3 { font-size: 1.75em; }
+h4 { font-size: 1.4em; }
+h5 { font-size: 1.2em; }
+h6 { font-size: 1em; }
+
 
 /* 3. Utility Classes */
 .container {
@@ -50,17 +76,32 @@ ul {
     display: inline-block;
     background-color: var(--primary-color);
     color: var(--white);
-    padding: 10px 20px;
+    padding: 12px 24px; /* Standardized padding */
     border: none;
-    border-radius: 5px;
+    border-radius: 5px; /* Standardized radius */
     cursor: pointer;
     text-align: center;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease; /* Added box-shadow transition */
+    font-weight: 700; /* Bold for buttons */
+    text-transform: uppercase; /* Optional: for button text style */
+    letter-spacing: 0.5px; /* Optional: for button text style */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05); /* Subtle base shadow */
 }
 
 .btn:hover {
-    background-color: #144618; /* Darker shade of primary */
+    background-color: #123f16; /* Darker shade of primary */
+    transform: translateY(-2px); /* Subtle lift effect */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15); /* Enhanced shadow on hover */
 }
+
+.btn.btn-accent { /* Example for accent button */
+    background-color: var(--accent-color);
+    color: var(--text-color); /* Ensure contrast for accent color */
+}
+.btn.btn-accent:hover {
+    background-color: #e6ac00; /* Darker accent */
+}
+
 
 /* 4. Header & Navigation */
 header {
@@ -92,16 +133,18 @@ nav li {
     margin-left: 25px;
 }
 
+/* Navigation links styling */
 nav a {
-    color: var(--text-color);
-    font-weight: 500;
-    padding: 5px 0;
-    /* Consider a subtle border-bottom or top inspired by temple gopuram lines for nav items on hover/active */
+    color: var(--text-color); /* Default nav link color */
+    font-weight: 500; /* Medium weight for nav links */
+    padding: 10px 15px;
+    transition: color 0.3s ease, background-color 0.3s ease;
+    border-radius: 4px;
 }
 
-nav a:hover, nav a.active {
-    color: var(--primary-color);
-    border-bottom: 2px solid var(--primary-color); /* Example hover/active style */
+nav a:hover, nav a.active { /* Active class would need to be set by JS or per page */
+    color: var(--primary-color); /* Primary color for hover/active text */
+    background-color: rgba(27, 94, 32, 0.05); /* Subtle primary background highlight */
 }
 
 /* 5. Main Content Sections */
@@ -109,21 +152,24 @@ section {
     padding: 40px 0;
 }
 
+/* Specific styling for headings within sections if different from global */
 main > h1, /* For page titles like "Our Properties" */
-section h1, section h2 {
+section h1 { /* Only top-level page/section H1s get primary color by default */
     color: var(--primary-color);
-    margin-bottom: 20px;
-    text-align: center;
-    /* Section titles could have a subtle underline or a small icon inspired by local art forms next to them. */
 }
+/* Other section headings (h2, h3 etc.) will use default --text-color from global h styling */
 
-main > h1 {
-    font-size: 2.5em;
+/* Re-confirming h1, h2 sizes for page titles, as global H sizes were increased */
+main > h1 { /* For page titles like "Our Properties" */
+    font-size: 2.8em; /* Match global H1 */
     margin-bottom: 30px;
+    text-align: center;
 }
 
-section h2 {
-    font-size: 2em;
+section h2 { /* For section titles like "Featured Properties" */
+    font-size: 2.2em; /* Match global H2 */
+    text-align: center;
+    margin-bottom: 25px; /* Consistent margin */
 }
 
 /* 6. Hero Section */
@@ -132,74 +178,110 @@ section h2 {
     /* background-image: url('../images/placeholder-hero.jpg'); */ /* Uncomment when hero image is available */
     background-size: cover;
     background-position: center;
-    min-height: 60vh; /* Adjusted from 70vh for a slightly smaller default */
+    min-height: 60vh;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
-    padding: 20px; /* Ensure padding for text content */
-    /* Cultural Comment: Background image for hero. A faint Kalamkari-style pattern overlay could be added later. */
+    padding: 20px;
+    position: relative; /* For z-index stacking of overlay and content */
+    color: var(--white); /* Default text color for hero */
 }
 
-.hero div {
-    background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent overlay for text readability */
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4); /* Dark overlay */
+    /* OR a subtle Andhra Green overlay:
+    background-color: rgba(27, 94, 32, 0.3); /* var(--primary-color) at 0.3 opacity */
+    z-index: 1; /* Ensure overlay is above background image but below text */
+}
+
+.hero * { /* Ensure hero content is above the overlay */
+    position: relative;
+    z-index: 2;
+}
+
+.hero div { /* This was the original text container */
+    background-color: transparent; /* Remove the previous semi-transparent overlay for text readability */
     padding: 30px;
     border-radius: 8px;
 }
 
-
 .hero h1 {
-    font-size: 2.8em;
-    color: var(--primary-color);
+    font-size: 3.2em; /* Increased font-size */
+    color: var(--white); /* Ensure white for contrast */
     margin-bottom: 15px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.6); /* Enhanced text-shadow */
 }
 
 .hero p {
-    font-size: 1.2em;
-    color: var(--dark-grey);
+    font-size: 1.3em; /* Slightly increased font-size */
+    color: var(--white); /* Ensure white for contrast */
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.5); /* Enhanced text-shadow */
 }
 
 /* 7. Property Cards */
 .property-listings-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 25px;
+    gap: 30px; /* Slightly increased gap for better spacing */
 }
 
 .property-card {
     border: 1px solid var(--light-grey);
     border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    padding: 15px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1); /* Adjusted shadow for subtlety */
     background-color: var(--white);
-    transition: box-shadow 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    overflow: hidden;
 }
 
 .property-card:hover {
-    box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15); /* Slightly increased hover shadow */
 }
 
 .property-card img {
     width: 100%;
-    height: 200px; /* Fixed height for uniform card images */
-    object-fit: cover; /* Ensures image covers the area without distortion */
-    border-radius: 5px;
-    margin-bottom: 15px;
+    height: 200px;
+    object-fit: cover;
+}
+
+.property-card-content {
+    padding: 20px; /* Increased padding for more whitespace */
 }
 
 .property-card h3 {
-    font-size: 1.4em;
-    color: var(--primary-color);
-    margin-bottom: 8px;
+    font-size: 1.75em; /* Use defined H3 size from global */
+    color: var(--primary-color); /* Primary color for property titles */
+    margin-bottom: 10px;
+    margin-top: 0;
+    font-family: 'Lato', Arial, sans-serif; /* Ensure heading font */
 }
 
 .property-card p {
-    font-size: 0.95em;
-    color: var(--dark-grey);
-    margin-bottom: 15px;
+    font-size: 1em; /* Standard body text size */
+    color: var(--dark-grey); /* Use defined dark-grey */
+    margin-bottom: 20px; /* Increased margin for better separation from button */
+    font-family: 'Open Sans', Arial, sans-serif; /* Ensure body font */
+    line-height: 1.6; /* Ensure consistent line height */
 }
 
-/* 8. Buttons (.btn) - Already styled in Utility Classes */
+.property-card .btn {
+    display: block;
+    width: auto; /* Allow button to size to content + padding */
+    max-width: 100%; /* Ensure it doesn't overflow */
+    margin: 0; /* Reset margin, align to left or as per text-align of parent if needed */
+    /* Padding and other .btn styles are global */
+}
+
+
+/* 8. Buttons (.btn) - Global styles applied. */
 
 /* 9. Forms (General Styling) */
 form {
@@ -211,10 +293,11 @@ form {
     /* border: 1px solid var(--light-grey); */ /* Optional border for forms */
 }
 
+/* Standardized form elements styling */
 form label {
     display: block;
     margin-bottom: 8px;
-    font-weight: 500;
+    font-weight: 600; /* Slightly bolder labels */
     color: var(--text-color);
 }
 
@@ -225,12 +308,14 @@ form input[type="subject"], /* Added input[type="subject"] */
 form textarea,
 form select {
     width: 100%;
-    padding: 12px;
+    padding: 12px; /* Consistent padding */
     margin-bottom: 15px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-family: inherit;
+    border: 1px solid #ccc; /* Standard border */
+    border-radius: 4px; /* Standardized radius */
+    font-family: 'Open Sans', Arial, sans-serif; /* Ensure body font */
     font-size: 1em;
+    background-color: var(--white); /* Ensure background is white */
+    color: var(--text-color); /* Ensure text color is standard */
 }
 
 form input[type="text"]:focus,
@@ -240,20 +325,20 @@ form input[type="subject"]:focus,
 form textarea:focus,
 form select:focus {
     outline: none;
-    border-color: var(--primary-color);
-    box-shadow: 0 0 5px rgba(27, 94, 32, 0.3);
+    border-color: var(--primary-color); /* Highlight with primary color */
+    box-shadow: 0 0 0 0.2rem rgba(27, 94, 32, 0.15); /* Subtle focus shadow with primary color */
 }
 
-form button[type="submit"] {
+form button[type="submit"] { /* Ensures form submit buttons use .btn styling */
     width: 100%;
     margin-top: 10px;
 }
 
 /* 10. Footer */
 footer {
-    background-color: var(--dark-grey);
+    background-color: var(--text-color); /* Dark grey for footer background */
     color: var(--white);
-    padding: 30px 0;
+    padding: 40px 0; /* Increased padding */
     text-align: center;
 }
 
@@ -265,26 +350,28 @@ footer p {
 footer div a { /* Social media links */
     color: var(--white);
     margin: 0 10px;
-    font-size: 1.2em;
+    font-size: 1.3em; /* Slightly larger icons */
+    transition: color 0.3s ease;
 }
 
 footer div a:hover {
-    color: var(--accent-color);
+    color: var(--accent-color); /* Accent color for social link hover */
 }
 
 footer ul { /* Footer nav links */
-    margin-top: 10px;
+    margin-top: 15px; /* Increased margin */
 }
 footer ul li {
     display: inline-block;
     margin: 0 10px;
 }
 footer ul li a {
-    color: var(--light-grey);
+    color: var(--light-grey); /* Light grey for footer links */
     font-size: 0.9em;
+    transition: color 0.3s ease;
 }
 footer ul li a:hover {
-    color: var(--white);
+    color: var(--white); /* White on hover */
     text-decoration: underline;
 }
 
@@ -341,23 +428,25 @@ footer ul li a:hover {
     margin-bottom: 10px;
     text-align: left;
     color: var(--primary-color);
+    font-family: 'Lato', Arial, sans-serif; /* Ensure heading font */
+    font-size: 1.75em; /* Appropriate size for filter title (H3) */
 }
 
 .filters select, .filters button {
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-family: inherit;
-    flex-grow: 1; /* Allow select and button to grow */
+    /* padding, border, radius, font-family are inherited from global form styles or .btn styles */
+    flex-grow: 1;
 }
 
-.filters button {
-    background-color: var(--accent-color);
-    color: var(--text-color);
+.filters select { /* Specific to select within filters if needed */
+    background-color: var(--white); /* Ensure white background */
+}
+
+.filters button { /* This is the "Apply Filters" button */
+    background-color: var(--accent-color); /* Use accent color */
+    color: var(--text-color); /* Ensure good contrast */
     border: none;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    flex-grow: 0.5; /* Button might not need to grow as much */
+    flex-grow: 0.5; /* Adjust growth factor */
+    /* Other .btn styles like padding, text-transform, font-weight are inherited */
 }
 
 .filters button:hover {
@@ -365,69 +454,132 @@ footer ul li a:hover {
 }
 
 /* Property Detail Page - property-detail.html */
+/* 1. Image Gallery */
 .property-detail-page .image-gallery {
     margin-bottom: 30px;
 }
 .property-detail-page #main-property-image {
-    width: 100%;
-    height: auto;
-    max-height: 500px;
-    object-fit: cover;
+    max-width: 100%; /* Ensure responsiveness */
+    height: auto; /* Maintain aspect ratio */
+    max-height: 500px; /* Optional: constrain max height */
+    object-fit: cover; /* Ensure image covers area well */
     border-radius: 8px;
-    margin-bottom: 10px;
+    border: 1px solid var(--light-grey);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Subtle shadow */
+    margin-bottom: 10px; /* Space before thumbnails */
 }
 .property-detail-page .thumbnails {
     display: flex;
     gap: 10px;
-    justify-content: center; /* Center thumbnails */
+    margin-top: 10px;
+    flex-wrap: wrap; /* Allow wrapping */
+    justify-content: center; /* Center thumbnails if they don't fill space */
 }
 .property-detail-page .thumbnails img.thumbnail {
     width: 100px;
     height: 75px;
     object-fit: cover;
+    border: 2px solid transparent;
     border-radius: 4px;
     cursor: pointer;
-    border: 2px solid transparent;
-    transition: border-color 0.3s ease;
+    transition: opacity 0.3s ease, border-color 0.3s ease; /* Added border-color transition */
 }
-.property-detail-page .thumbnails img.thumbnail:hover,
-.property-detail-page .thumbnails img.thumbnail.active {
+.property-detail-page .thumbnails img.thumbnail:hover {
+    opacity: 0.7;
+}
+.property-detail-page .thumbnails img.thumbnail.active,
+.property-detail-page .thumbnails img.thumbnail:focus { /* :focus for keyboard nav */
     border-color: var(--primary-color);
+    opacity: 1;
 }
 
+/* 2. Property Information Layout */
 .property-info {
     display: grid;
-    grid-template-columns: 2fr 1fr; /* Description takes more space */
+    grid-template-columns: 2fr 1fr; /* Default two-column layout */
     gap: 30px;
     margin-bottom: 30px;
+    padding: 20px; /* Added padding to overall container */
+    background-color: var(--white); /* Optional: light background for grouping */
+    border: 1px solid var(--light-grey); /* Optional: border for grouping */
+    border-radius: 8px;
 }
 
+/* Headings within .property-info subsections */
 .property-info .description h2,
 .property-info .features h2,
 .property-info .location-map h2 {
-    text-align: left;
-    font-size: 1.5em;
-    margin-bottom: 15px;
+    font-size: 1.75em; /* Match global H3 */
     color: var(--primary-color);
+    font-family: 'Lato', Arial, sans-serif;
+    border-bottom: 1px solid var(--light-grey);
+    padding-bottom: 8px; /* Increased padding */
+    margin-top: 0; /* Remove top margin if section has padding */
+    margin-bottom: 15px;
+    text-align: left;
 }
 
+/* Description styling */
+.property-info .description p {
+    font-family: 'Open Sans', Arial, sans-serif;
+    color: var(--text-color);
+    line-height: 1.7; /* Slightly more generous for readability */
+    margin-bottom: 1em; /* Standard paragraph spacing */
+}
+
+/* Features List */
+.property-info .features ul {
+    list-style-type: none;
+    padding-left: 0;
+}
 .property-info .features ul li {
-    margin-bottom: 8px;
+    font-family: 'Open Sans', Arial, sans-serif;
+    color: var(--text-color);
+    line-height: 1.6;
+    margin-bottom: 10px; /* Increased margin */
+    padding-left: 25px; /* Space for custom bullet */
+    position: relative;
+}
+.property-info .features ul li::before {
+    content: '✓'; /* Checkmark character */
+    position: absolute;
+    left: 0;
+    color: var(--primary-color); /* Andhra green for the checkmark */
+    font-weight: bold;
+    font-size: 1.1em; /* Slightly larger checkmark */
 }
 
+/* Address & Map */
+.property-info .location-map p { /* For address text */
+    font-family: 'Open Sans', Arial, sans-serif;
+    color: var(--text-color);
+    line-height: 1.6;
+    margin-bottom: 10px; /* Space before map placeholder */
+}
 .location-map #map-placeholder {
     border: 1px solid var(--light-grey);
-    border-radius: 5px;
+    border-radius: 4px;
+    margin-top: 10px;
+    background-color: var(--light-grey);
+    min-height: 200px; /* Ensure map placeholder has some height */
 }
 
+/* 3. Inquiry Form */
 .inquiry-form {
     background-color: var(--secondary-color);
     padding: 30px;
     border-radius: 8px;
 }
 .inquiry-form h2 {
+    font-family: 'Lato', Arial, sans-serif;
+    font-size: 2em; /* Consistent with other H2s or slightly smaller */
+    color: var(--primary-color);
     text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: 25px; /* Consistent margin */
+}
+/* Form elements should inherit global styles. Add specific overrides if needed: */
+.inquiry-form label {
+    /* Example: text-align: left; if needed */
 }
 
 @media (max-width: 992px) { /* For property-info grid */
@@ -440,51 +592,97 @@ footer ul li a:hover {
 /* About Us Page - about.html */
 .about-page .intro-content blockquote {
     margin: 20px auto;
-    padding: 15px;
-    border-left: 4px solid var(--primary-color);
-    background-color: var(--secondary-color);
+    padding: 20px; /* Increased padding */
+    border-left: 4px solid var(--primary-color); /* Primary color for border */
+    background-color: var(--secondary-color); /* Secondary color for background */
     font-style: italic;
-    color: var(--dark-grey);
+    color: var(--dark-grey); /* Use defined dark-grey */
     max-width: 80%;
+    font-family: 'Open Sans', Arial, sans-serif; /* Ensure body font for quote */
+    line-height: 1.7; /* Improved line height for blockquote */
 }
 
 .about-page .heritage-connection,
 .about-page .team-preview {
-    overflow: hidden; /* To contain floats */
+    overflow: hidden;
     margin-bottom: 30px;
 }
 
-.about-page .heritage-connection img,
+.about-page .heritage-connection img, /* These are the floated images */
 .about-page .team-preview img {
     border-radius: 8px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 
+/* Titles within About Us sections */
+.about-page .heritage-connection h2,
+.about-page .team-preview h2,
+.about-page .vision-values h2 {
+    font-size: 2em; /* Consistent with other section titles (H2) */
+    color: var(--primary-color);
+    text-align: left; /* Assuming these sections are not full-width centered */
+    margin-bottom: 15px;
+    font-family: 'Lato', Arial, sans-serif;
+}
+/* Ensure paragraphs within these sections use body font and color */
+.about-page .heritage-connection p,
+.about-page .team-preview p,
+.about-page .vision-values p { /* If vision-values has p tags */
+    font-family: 'Open Sans', Arial, sans-serif;
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+
 .about-page .vision-values ul {
-    list-style-type: disc; /* Use bullets for this list */
-    padding-left: 20px;
+    list-style-type: disc;
+    padding-left: 25px; /* Increased padding */
+    font-family: 'Open Sans', Arial, sans-serif; /* Ensure body font */
 }
 .about-page .vision-values ul li {
     margin-bottom: 10px;
+    color: var(--text-color); /* Ensure list items use standard text color */
+    line-height: 1.6; /* Ensure consistent line height for list items */
 }
 
 /* Contact Page - contact.html */
 .contact-page .contact-details p {
     margin-bottom: 10px;
-    font-size: 1.1em;
+    font-size: 1.1em; /* Slightly larger for emphasis */
+    font-family: 'Open Sans', Arial, sans-serif; /* Ensure body font */
+    color: var(--text-color); /* Ensure standard text color */
+    line-height: 1.7; /* Improved line height */
 }
 .contact-page .contact-details p strong {
+    color: var(--primary-color); /* Primary color for emphasis */
+    font-weight: 700; /* Use global heading/bold weight */
+}
+.contact-page .contact-details p a { /* Ensure links in contact details are styled */
     color: var(--primary-color);
 }
+.contact-page .contact-details p a:hover {
+    color: #123f16; /* Darker primary on hover */
+}
+
 .contact-page .map-section #google-map-placeholder {
     border: 1px solid var(--light-grey);
     border-radius: 5px;
+    background-color: var(--light-grey); /* Placeholder background */
+}
+/* Ensure heading for map section is styled */
+.contact-page .map-section h2 {
+    font-size: 2em; /* H2 size */
+    color: var(--primary-color);
+    text-align: center; /* Or left, depending on design */
+    margin-bottom: 20px;
+    font-family: 'Lato', Arial, sans-serif;
 }
 
 /* Pagination */
 .pagination {
     text-align: center;
     margin-top: 30px;
+    padding: 10px 0; /* Adjusted padding */
 }
 .pagination ul {
     display: inline-block;
@@ -495,10 +693,13 @@ footer ul li a:hover {
 }
 .pagination li a {
     display: block;
-    padding: 8px 15px;
+    padding: 10px 18px; /* Increased padding for larger touch target */
     border: 1px solid var(--light-grey);
     color: var(--primary-color);
     border-radius: 4px;
+    font-family: 'Open Sans', Arial, sans-serif; /* Consistent font */
+    font-weight: 600; /* Bolder page numbers */
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }
 .pagination li a:hover, .pagination li a.active {
     background-color: var(--primary-color);
@@ -508,32 +709,56 @@ footer ul li a:hover {
 
 /* Cultural snippet on homepage */
 .cultural-snippet {
-    background-color: var(--secondary-color);
-    padding: 40px 20px; /* Add horizontal padding */
-}
-.cultural-snippet div {
     display: flex;
     align-items: center;
-    gap: 20px;
-    max-width: 1100px; /* Ensure it aligns with container */
-    margin: 0 auto; /* Center it */
-}
-.cultural-snippet img {
-    max-width: 250px; /* Control image size */
-    height: auto;
+    gap: 30px;
+    padding: 40px; /* Increased padding for a more spacious feel */
+    background-color: var(--secondary-color); /* Confirmed use of secondary color */
     border-radius: 8px;
+    border-left: 5px solid var(--primary-color);
 }
-.cultural-snippet p {
-    flex: 1; /* Allow text to take remaining space */
+
+.cultural-snippet img {
+    max-width: 220px; /* Slightly larger image */
+    height: auto;
+    border-radius: 4px;
+    flex-shrink: 0;
+}
+
+.cultural-snippet-text {
+    flex: 1;
     text-align: left;
 }
 
+.cultural-snippet h2 {
+    color: var(--primary-color);
+    margin-bottom: 15px;
+    text-align: left;
+    font-family: 'Lato', Arial, sans-serif; /* Ensure heading font */
+    font-size: 2.2em; /* Match global H2 */
+}
+.cultural-snippet p {
+    text-align: left;
+    font-family: 'Open Sans', Arial, sans-serif; /* Ensure body font */
+    color: var(--text-color); /* Ensure standard text color */
+    line-height: 1.7; /* Slightly more generous line height for readability */
+}
+
+
 @media (max-width: 768px) {
-    .cultural-snippet div {
+    .cultural-snippet {
         flex-direction: column;
         text-align: center;
+        padding: 30px; /* Adjust padding for smaller screens */
     }
     .cultural-snippet img {
-        margin-bottom: 15px;
+        margin-bottom: 20px;
+        max-width: 200px; /* Adjust image size for stacked layout */
+    }
+    .cultural-snippet h2, .cultural-snippet p, .cultural-snippet-text {
+        text-align: center;
+    }
+     .cultural-snippet h2 {
+        font-size: 2em; /* Adjust H2 size for mobile */
     }
 }

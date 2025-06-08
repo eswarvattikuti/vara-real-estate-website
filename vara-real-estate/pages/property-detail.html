@@ -1,20 +1,21 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Property Details - Vara Real Estate</title>
-    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body>
     <header>
         <div>Vara Real Estate</div>
         <nav>
             <ul>
-                <li><a href="../index.html">Home</a></li>
-                <li><a href="properties.html">Properties</a></li>
-                <li><a href="about.html">About Us</a></li>
-                <li><a href="contact.html">Contact</a></li>
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <li><a href="{% url 'property_list' %}">Properties</a></li>
+                <li><a href="{% url 'about' %}">About Us</a></li>
+                <li><a href="{% url 'contact' %}">Contact</a></li>
             </ul>
         </nav>
     </header>
@@ -24,11 +25,11 @@
         <p class="price">₹1.2 Crore</p>
 
         <section class="image-gallery">
-            <img src="../images/placeholder-property.jpg" alt="Main property view" id="main-property-image">
+            <img src="https://unsplash.com/photos/XQ3tWSSGkl0/download?force=true" alt="Main property view of Elegant Riverside Villa" id="main-property-image">
             <div class="thumbnails">
-                <img src="../images/placeholder-property.jpg" alt="Property thumbnail 1" class="thumbnail">
-                <img src="../images/placeholder-property.jpg" alt="Property thumbnail 2" class="thumbnail">
-                <img src="../images/placeholder-property.jpg" alt="Property thumbnail 3" class="thumbnail">
+                <img src="https://unsplash.com/photos/i1OZyG83-eo/download?force=true" alt="Property thumbnail 1 - Villa alternate view" class="thumbnail">
+                <img src="https://unsplash.com/photos/XBZIhvcOsyQ/download?force=true" alt="Property thumbnail 2 - Villa interior" class="thumbnail">
+                <img src="https://unsplash.com/photos/XQ3tWSSGkl0/download?force=true" alt="Property thumbnail 3 - Villa garden view" class="thumbnail">
             </div>
         </section>
 
@@ -88,6 +89,6 @@
         </ul>
     </footer>
 
-    <script src="../js/main.js" defer></script>
+    <script src="{% static 'js/main.js' %}" defer></script>
 </body>
 </html>

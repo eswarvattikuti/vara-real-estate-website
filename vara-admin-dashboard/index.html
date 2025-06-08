@@ -1,20 +1,21 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Dashboard - Vara Real Estate</title>
-    <link rel="stylesheet" href="css/admin-style.css">
+    <link rel="stylesheet" href="{% static 'css/admin-style.css' %}">
 </head>
 <body>
     <aside class="sidebar">
         <h2>Vara Admin</h2>
         <ul>
-            <li><a href="index.html">Dashboard</a></li>
-            <li><a href="pages/listings.html">Property Listings</a></li>
-            <li><a href="pages/inquiries.html">Manage Inquiries</a></li>
+            <li><a href="{% url 'admin_dashboard_overview' %}">Dashboard</a></li>
+            <li><a href="{% url 'admin_property_listings' %}">Property Listings</a></li>
+            <li><a href="{% url 'admin_manage_inquiries' %}">Manage Inquiries</a></li>
             <li><a href="#">Users</a></li>
-            <li><a href="login.html">Logout</a></li>
+            <li><a href="{% url 'logout' %}">Logout</a></li>
         </ul>
     </aside>
 
@@ -22,7 +23,7 @@
         <header class="admin-header">
             <h1>Admin Dashboard</h1>
             <p>Welcome, Admin!</p>
-            <a href="pages/edit-listing.html" class="btn btn-primary">Add New Property</a>
+            <a href="{% url 'admin_add_property' %}" class="btn btn-primary">Add New Property</a>
         </header>
 
         <section class="dashboard-summary">
@@ -30,12 +31,12 @@
                 <div class="summary-card">
                     <h3>Total Active Listings</h3>
                     <p class="count">0</p>
-                    <a href="pages/listings.html">View Listings</a>
+                    <a href="{% url 'admin_property_listings' %}">View Listings</a>
                 </div>
                 <div class="summary-card">
                     <h3>New Inquiries</h3>
                     <p class="count">0</p>
-                    <a href="pages/inquiries.html">View Inquiries</a>
+                    <a href="{% url 'admin_manage_inquiries' %}">View Inquiries</a>
                 </div>
                 <div class="summary-card">
                     <h3>Pending Approvals (Example)</h3>
@@ -51,6 +52,6 @@
         </section>
     </div>
 
-    <script src="js/admin-main.js" defer></script>
+    <script src="{% static 'js/admin-main.js' %}" defer></script>
 </body>
 </html>

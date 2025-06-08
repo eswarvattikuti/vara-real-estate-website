@@ -1,20 +1,21 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Manage Listings - Admin Dashboard</title>
-    <link rel="stylesheet" href="../css/admin-style.css">
+    <link rel="stylesheet" href="{% static 'css/admin-style.css' %}">
 </head>
 <body>
     <aside class="sidebar">
         <h2>Vara Admin</h2>
         <ul>
-            <li><a href="../index.html">Dashboard</a></li>
-            <li><a href="listings.html">Property Listings</a></li>
-            <li><a href="inquiries.html">Manage Inquiries</a></li>
+            <li><a href="{% url 'admin_dashboard_overview' %}">Dashboard</a></li>
+            <li><a href="{% url 'admin_property_listings' %}">Property Listings</a></li>
+            <li><a href="{% url 'admin_manage_inquiries' %}">Manage Inquiries</a></li>
             <li><a href="#">Users</a></li>
-            <li><a href="../login.html">Logout</a></li>
+            <li><a href="{% url 'logout' %}">Logout</a></li>
         </ul>
     </aside>
 
@@ -22,12 +23,25 @@
         <header class="admin-header">
             <h1>Admin Dashboard</h1>
             <p>Welcome, Admin!</p>
-            <a href="edit-listing.html" class="btn btn-primary">Add New Property</a>
+            <a href="{% url 'admin_add_property' %}" class="btn btn-primary">Add New Property</a>
         </header>
 
         <section class="page-content">
             <h1>Manage Property Listings</h1>
-            <a href="edit-listing.html" class="btn btn-primary">Add New Listing</a>
+
+            {% if messages %}
+                <ul class="messages" style="list-style-type: none; padding: 10px; margin-bottom: 15px;">
+                    {% for message in messages %}
+                        <li{% if message.tags %} class="{{ message.tags }}" style="padding: 10px; border-radius: 4px; background-color: #f0f0f0; border-left: 5px solid #4CAF50;"{% endif %}>
+                            {% if message.tags == 'success' %}✔️ {% endif %}
+                            {% if message.tags == 'error' %}❌ {% endif %}
+                            {{ message }}
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+
+            <a href="{% url 'admin_add_property' %}" class="btn btn-primary">Add New Listing</a>
 
             <table class="data-table">
                 <thead>
@@ -41,22 +55,32 @@
                     </tr>
                 </thead>
                 <tbody>
+                    {% for property in properties %}
                     <tr>
-                        <td><img src="../images/placeholder-thumb.jpg" alt="thumbnail" width="50"></td>
-                        <td>Luxury Villa Amaravati</td>
-                        <td>₹2.5 Crore</td>
-                        <td>For Sale</td>
-                        <td>2023-10-26</td>
-                        <td><a href="edit-listing.html?id=1" class="btn btn-sm">Edit</a> <button class="btn btn-sm btn-danger">Delete</button></td>
+                        <td>
+                            {% if property.main_image and property.main_image.url %}
+                                <img src="{{ property.main_image.url }}" alt="{{ property.title }} thumbnail" width="50" style="height: auto; border-radius: 3px;">
+                            {% else %}
+                                <img src="{% static 'images/placeholder-thumb.jpg' %}" alt="Placeholder thumbnail" width="50" style="height: auto; border-radius: 3px;">
+                            {% endif %}
+                        </td>
+                        <td>{{ property.title }}</td>
+                        <td>₹{{ property.price|floatformat:2 }}</td> {# Assuming price is in INR and needs formatting #}
+                        <td>{{ property.get_status_display }}</td>
+                        <td>{{ property.date_added|date:"Y-m-d" }}</td>
+                        <td>
+                            <a href="{% url 'admin_edit_property' property_id=property.id %}" class="btn btn-sm">Edit</a>
+                            <form method="POST" action="{% url 'admin_delete_property' property_id=property.id %}" style="display: inline;">
+                                {% csrf_token %}
+                                <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure you want to delete this property: \'{{ property.title|escapejs }}\'?');">Delete</button>
+                            </form>
+                        </td>
                     </tr>
+                    {% empty %}
                     <tr>
-                        <td><img src="../images/placeholder-thumb.jpg" alt="thumbnail" width="50"></td>
-                        <td>Modern Apartment Downtown</td>
-                        <td>₹85 Lakhs</td>
-                        <td>Sold</td>
-                        <td>2023-10-20</td>
-                        <td><a href="edit-listing.html?id=2" class="btn btn-sm">Edit</a> <button class="btn btn-sm btn-danger">Delete</button></td>
+                        <td colspan="6">No properties found.</td>
                     </tr>
+                    {% endfor %}
                 </tbody>
             </table>
 
@@ -66,6 +90,6 @@
         </section>
     </div>
 
-    <script src="../js/admin-main.js" defer></script>
+    <script src="{% static 'js/admin-main.js' %}" defer></script>
 </body>
 </html>
